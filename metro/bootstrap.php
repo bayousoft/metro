@@ -2,6 +2,9 @@
 	
 	session_start();
 	
+	//TODO Create metro_debug_log(), metro_debug_print() functions
+	$debug_log = '';	
+	
 	// Update accordingly
 	$base_url = '';
 	$debug = 1; // 0, 1
@@ -43,8 +46,7 @@
 		header('Location: /' . $base_url);
 	}	
 	
-	//TODO Create metro_debug_log(), metro_debug_print() functions
-	$debug_log = '';
+	$debug_log = $debug_log . date("m.d.y  H.i.s") . ' ' . '<span class="debug_log">tpl= </span>' . $tpl;
 	$debug_log = $debug_log . date("m.d.y  H.i.s") . ' ' . '<span class="debug_log">Bootstrap successful</span>';
 
 ?>
