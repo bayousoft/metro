@@ -1,48 +1,8 @@
 <?php
-	session_start();
 	
 	// Bootstrap Metro
 	require_once('metro/bootstrap.php');
-	
-	// Update accordingly
-	$base_url = '';
-	$debug = 1; // 0, 1
-	
-	// Error reporting
-	error_reporting(E_ALL);
-	ini_set('display_errors', '1');
-	
-	
-	$requestUri = $_SERVER['REQUEST_URI'];
-	
-	// Remove base from URI
-	$requestUri = str_replace($base_url,'',$requestUri);
-	
-	// Strip query params
-	$i = strpos($requestUri, '?');
-	if($i !== false)
-	{
-		$requestUri = substr($requestUri, 0, $i);
-	}
-	
-	// Create array from path
-	$urlParts = explode('/', $requestUri);
-	
-	// Build template
-	if (strlen($urlParts[1]))
-	{ 
-		$tpl = 'metro/' . $urlParts[1] . '.tpl.php';
-	}
-	else
-	{
-		$tpl = 'metro/page.tpl.php';	
-	}
-	// Send tpl not found to root for now
-	// TODO: add 404 support here
-	if (!file_exists($tpl))
-	{	
-		header('Location: /' . $base_url);
-	}
+
 ?>
 
 <!DOCTYPE html>
@@ -60,12 +20,15 @@
 
         <!-- Add your site or application content here -->
         <?php 
+				
 					if (file_exists($tpl))				
 					{			
 						require_once($tpl);
 					} 						
+				
+				  require_once('metro/close.php');
+				
 				?>
-
-		<?php require_once('metro/close.php'); ?>
+        
     </body>
 </html>
