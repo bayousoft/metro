@@ -5,7 +5,7 @@
 	require_once('metro/bootstrap.php');
 	
 	// Update accordingly
-	$base_url = 'h5bp/';
+	$base_url = '';
 	$debug = 1; // 0, 1
 	
 	// Error reporting
