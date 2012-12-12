@@ -2,38 +2,37 @@
 	
 	session_start();
 	
-	//TODO Create metro_debug_log(), metro_debug_print() functions
-	$debug_log = '';	
-	
 	// Update accordingly
-	$base_url = '';
-	$debug = 1; // 0, 1
-	
+	$base_url = 'h5bp/'; // e.g. h5bp/
+	$debug = 1; // e.g. 0, 1 //  If set to 1 Debug info will be printed at the bottom of every page.
+		
 	// Error reporting
 	error_reporting(E_ALL);
 	ini_set('display_errors', '1');
 	
 	
-	$requestUri = $_SERVER['REQUEST_URI'];
+	
+	// NO NEED TO EDIT BELOW THIS POINT
+	$request_uri = $_SERVER['REQUEST_URI'];
 	
 	// Remove base from URI
-	$requestUri = str_replace($base_url,'',$requestUri);
+	$request_uri = str_replace($base_url,'',$request_uri);
 	
 	// Strip query params
-	$i = strpos($requestUri, '?');
+	$i = strpos($request_uri, '?');
 	if($i !== false)
 	{
-		$requestUri = substr($requestUri, 0, $i);
+		$request_uri_stripped = substr($request_uri, 0, $i);
 	}
 	
 	// Create array from path
-	$urlParts = explode('/', $requestUri);
+	$url_parts = explode('/', $request_uri_stripped);
 	
 	// Build template
 	// TODO: Add security layer here 
-	if (strlen($urlParts[1]))
+	if (strlen($url_parts[1]))
 	{ 
-		$tpl = 'metro/' . $urlParts[1] . '.tpl.php';
+		$tpl = 'metro/' . $url_parts[1] . '.tpl.php';
 	}
 	else
 	{
@@ -46,6 +45,8 @@
 		header('Location: /' . $base_url);
 	}	
 	
+	//DEBUG
+	$debug_log = '';		
 	$debug_log = $debug_log . date("m.d.y  H.i.s") . ' ' . '<span class="debug_log">tpl= </span>' . $tpl;
 	$debug_log = $debug_log . date("m.d.y  H.i.s") . ' ' . '<span class="debug_log">Bootstrap successful</span>';
 
