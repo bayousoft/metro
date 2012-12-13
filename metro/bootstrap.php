@@ -9,7 +9,7 @@
 	$request_uri = $_SERVER['REQUEST_URI'];
 	
 	// Remove base from URI
-	$request_uri = str_replace($base_url,'',$request_uri);
+	$request_uri_stripped = str_replace($base_url,'',$request_uri);
 	
 	// Strip query params
 	$i = strpos($request_uri, '?');
