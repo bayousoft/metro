@@ -2,15 +2,8 @@
 	
 	session_start();
 	
-	// Update accordingly
-	$base_url = 'h5bp/'; // e.g. h5bp/
-	$debug = 1; // e.g. 0, 1 //  If set to 1 Debug info will be printed at the bottom of every page.
-		
-	// Error reporting
-	error_reporting(E_ALL);
-	ini_set('display_errors', '1');
-	
-	
+	// Configuration
+	require_once('config.php');
 	
 	// NO NEED TO EDIT BELOW THIS POINT
 	$request_uri = $_SERVER['REQUEST_URI'];
