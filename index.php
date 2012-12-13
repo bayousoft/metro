@@ -1,7 +1,7 @@
 <?php
 	
 	// Bootstrap Metro
-	require_once('metro/bootstrap.php');
+	require_once('metro/core/bootstrap.php');
 
 ?>
 
@@ -11,7 +11,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
-        <?php require_once('metro/head.php'); ?>
+        <?php require_once('metro/head.tpl.php'); ?>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -26,7 +26,7 @@
 						require_once($tpl);
 					} 						
 				
-				  require_once('metro/close.php');
+				  require_once('metro/close.tpl.php');
 				
 				?>
         
