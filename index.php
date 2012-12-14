@@ -1,8 +1,5 @@
 <?php
-	
-	// Bootstrap Metro
 	require_once('metro/core/bootstrap.php');
-
 ?>
 
 <!DOCTYPE html>
@@ -19,16 +16,18 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <?php 
+    <?php 
+		
+		metroAuthenticate();
+		
+		if (file_exists($tpl))				
+		{			
+			require_once($tpl);
+		} 						
+	
+		require_once('metro/close.tpl.php');
 				
-					if (file_exists($tpl))				
-					{			
-						require_once($tpl);
-					} 						
-				
-				  require_once('metro/close.tpl.php');
-				
-				?>
+		?>
         
     </body>
 </html>

@@ -1,11 +1,13 @@
 <?php
 	
 	session_start();
+
+	require_once('functions.php');
 	
-	// Configuration
-	require_once('config.php');
+	// Global PDO connection for now
+	metroConnect();
 	
-	// NO NEED TO EDIT BELOW THIS POINT
+	
 	$request_uri = $_SERVER['REQUEST_URI'];
 	
 	// Remove base from URI
