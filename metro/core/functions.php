@@ -1,25 +1,26 @@
 <?php
-  // Update accordingly
-  $base_url = ''; // e.g. directory_name/
-  $debug = 0; // e.g. 0, 1 //  If set to 1 Debug info will be printed at the bottom of every page.
-  $_SESSION['logged_in'] = 0; 	  
-  // Error reporting
+  
+	// Update accordingly
+  $base_url = ''; // e.g. directory_name/	  
   error_reporting(E_ALL);
   ini_set('display_errors', '1');
-
-  function metroConnect()
-	{
-		global $db_conn;
-		try 
-		{
-			$db_conn = new PDO('mysql:host=localhost;dbname=?', 'USERNAME', 'PASSWORD');
-		}
-		catch (PDOException $e) 
-		{
-			echo "Could not connect to database";
-		}		
-  }
+	//
 	
+	function metroMessage($message, $class='normal')
+	{
+		echo '<div class="message ' . $class . '">' . $message . '</div>';
+	}
+
+	function metroParam(&$var, $default_var){
+			if (! isset($var)){
+					$var = $default_var;
+					return true;
+			} else {
+					return false;
+			}
+	}
+
+
   function metroAuthenticate() 
   {
 		if (!isset($_SESSION['logged_in']))
@@ -53,4 +54,35 @@
 			echo $user_details['email']; 	
 		}
   }
+	
+	function metroEmailPassword()
+	{
+		if (!isset($_POST['email']))
+		{
+			echo '<div align="right"><a href="/">Home</a></div>';
+			metroMessage('Please provide your email address and your password will be sent to you');
+			echo '<h3>Lost Login</h3>';
+			echo '<form id="email-password" method="post">';
+			echo '<input type="hidden" name="form-id" value="email-password">';
+			echo '<div><input type="text" name="email" placeholder="Email address"></div>';
+			echo '<div><input type="submit" name="submit" value="Email Password"></div>';
+			echo '</form>';
+		}
+		else
+		{
+			echo 'Your password was sent to your email address.';
+			// TODO: Send password to email address of record.
+		}	
+	}
+	
+	function metroLogOut()
+	{
+		global $path; 
+		if ($path[1] == 'logout')
+		{
+			session_destroy();
+			header('Location: /');
+		}
+	}	
+	
 ?>

@@ -2,6 +2,7 @@
 	
 	session_start();
 
+	require_once('connect.php');  // Update connection settings here
 	require_once('functions.php');
 	
 	// Global PDO connection for now
@@ -31,7 +32,7 @@
 	}
 	else
 	{
-		$tpl = 'metro/page.tpl.php';	
+		$tpl = 'metro/home.tpl.php';	
 	}
 	// Send tpl not found to root for now
 	// TODO: Add 404 support here
@@ -39,10 +40,5 @@
 	{	
 		header('Location: /' . $base_url);
 	}	
-	
-	//DEBUG
-	$debug_log = '';		
-	$debug_log = $debug_log . date("m.d.y  H.i.s") . ' ' . '<span class="debug_log">tpl= </span>' . $tpl;
-	$debug_log = $debug_log . date("m.d.y  H.i.s") . ' ' . '<span class="debug_log">Bootstrap successful</span>';
 
 ?>

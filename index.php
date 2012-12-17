@@ -1,6 +1,4 @@
-<?php
-	require_once('metro/core/bootstrap.php');
-?>
+<?php require_once('metro/core/bootstrap.php') ?>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -8,7 +6,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
-        <?php require_once('metro/head.tpl.php'); ?>
+        <?php require_once('metro/core/head.php') ?>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -16,18 +14,36 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-    <?php 
-		
+    <div id="header"><a href="/" title="Home"><img src="img/logo.png" border="0"></a></div>
+		<div id="content">
+		<?php 
+				
 		metroAuthenticate();
 		
 		if (file_exists($tpl))				
 		{			
 			require_once($tpl);
-		} 						
-	
-		require_once('metro/close.tpl.php');
-				
+		} 				
+								
 		?>
-        
+    </div>
+    <div id="footer">
+    
+    </div>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.3.min.js"><\/script>')</script>
+		<script src="js/plugins.js"></script>
+		<script src="js/main.js"></script>
+		
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+		<script>
+				var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+				(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+				g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+				s.parentNode.insertBefore(g,s)}(document,'script'));
+		</script>
+    
+		<?php require_once('metro/core/close.php') ?>
+       
     </body>
 </html>
