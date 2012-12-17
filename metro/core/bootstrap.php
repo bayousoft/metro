@@ -32,7 +32,7 @@
 	}
 	else
 	{
-		$tpl = 'metro/home.tpl.php';	
+		$tpl = 'metro/page.tpl.php';	
 	}
 	// Send tpl not found to root for now
 	// TODO: Add 404 support here
